@@ -4,15 +4,13 @@ En este espacio encontrarás una colección de prácticas y recursos de la asign
 
 ## ¿Qué encontrarás aquí?
 
-- **Practicas Evaluables**: Ejercicios para que puedas seguir el proceso de despliegue de manera estructurada.
+- **Prácticas Evaluables**: Ejercicios para que puedas seguir el proceso de despliegue de manera estructurada.
 - **Recursos útiles**: Documentación y enlaces.
 
 ## Objetivo
 
 El propósito de este material es que, al finalizar el curso, pueda manejar con confianza el despliegue de aplicaciones web en distintos entornos, ya sea en servidores locales, plataformas en la nube o servicios de hosting especializados.
 
-### ¡Manos a la obra! 🚀
-
-Comienza explorando las prácticas disponibles.
-
 ---
+
+**Alumno: Coronado Ortega, Alejandro**

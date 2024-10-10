@@ -1,4 +1,4 @@
-site_name: My Docs
+site_name: Prácticas Despliegue Aplicaciones web
 site_url: https://mydomain.org/mysite
 theme:
   name: material
@@ -45,4 +45,4 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github 
-      link: https://fosstodon.org/@squidfunk
+      link: https://github.com/Alexcoro13/Alexcoro13.github.io
