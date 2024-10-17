@@ -12,5 +12,3 @@ En este espacio encontrarás una colección de prácticas y recursos de la asign
 El propósito de este material es que, al finalizar el curso, pueda manejar con confianza el despliegue de aplicaciones web en distintos entornos, ya sea en servidores locales, plataformas en la nube o servicios de hosting especializados.
 
 ---
-
-**Alumno: Coronado Ortega, Alejandro**
