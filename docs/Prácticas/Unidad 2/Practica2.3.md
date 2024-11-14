@@ -4,7 +4,7 @@
 ## Requisitos antes de comenzar la práctica
 
 !!! warning "Atención"
-    - No iniciar esta practica hasta haber completado la [práctica2.1](./Practica2.1.md)
+    - No iniciar esta practica hasta haber completado la [práctica2.1](Practica2.1.md)
 
 
 ## Introducción
@@ -54,17 +54,17 @@ Para que todo quede más diferenciado y os quede más claro que la petición est
 1. En primer lugar, deberemos cambiar el nombre de nuestra web por el de ```webserver```, eso implica:
     - Cambiar el nombre en ```/var/www/```
     
-    ![Imagen cambio de nombre1](../assets/images/Practica2.3/renombrandopractica2-1.png)
+    ![Imagen cambio de nombre1](../../assets/images/Practica2.3/renombrandopractica2-1.png)
 
     - Cambiar el nombre del archivo de configuración de sitios disponibles par Nginx
 
-    ![Imagen cambio de nombre2](../assets/images/Practica2.3/renombrandopractica2-2.png)
+    ![Imagen cambio de nombre2](../../assets/images/Practica2.3/renombrandopractica2-2.png)
 
     - Eliminar el link simbólico antiguo con el comando unlink ```nombre_del_link``` dentro de la carpeta sites-enabled y crear el nuevo para el nuevo nombre. 
 
-    ![Imagen cambio de nombre3](../assets/images/Practica2.3/renombrandopractica2-3.png)
+    ![Imagen cambio de nombre3](../../assets/images/Practica2.3/renombrandopractica2-3.png)
 
-    ![Imagen cambio de nombre4](../assets/images/Practica2.3/renombrandopractica2-4.png)
+    ![Imagen cambio de nombre4](../../assets/images/Practica2.3/renombrandopractica2-4.png)
 
 2. En el archivo de configuración del sitio web, en lugar de hacer que el servidor escuche en el puerto 80, cambiadlo al 8080. 
 3. Reiniciar Nginx
@@ -96,7 +96,7 @@ server {
 
 Quedando algo así:
 
-![Imagen configuración proxy](../assets/images/Practica2.3/archivo_config-proxy.png)
+![Imagen configuración proxy](../../assets/images/Practica2.3/archivo_config-proxy.png)
 
 ## Comprobaciones
 
@@ -104,13 +104,13 @@ Tras estos cambios si hemos conseguido hacerlos sin problemas, deberíamos ser c
 
 - Deberemos comprar los access.log de cada servidor web.
 
-![Imagen access log servidor proxy](../assets/images/Practica2.3/accesslog_proxy.png)
+![Imagen access log servidor proxy](../../assets/images/Practica2.3/accesslog_proxy.png)
 
 Y como podemos ver en la cabecera, muestra un código 301 que es redireccionamiento y nos manda hacia el servidor donde está la página web.
 
 - Comprobaremos además la petición y respuesta con las herramientas de desarrollador de Firefox.
 
-![Imagen cabeceras firefox](../assets/images/Practica2.3/cabeceras_web.png)
+![Imagen cabeceras firefox](../../assets/images/Practica2.3/cabeceras_web.png)
 
 En dónde se puede ver la respuesta de la petición GET HTTP (200 OK). 
 
@@ -127,20 +127,20 @@ add_header Host nombre_del_host;
 ```
 
 1. Añadiremos primero esta cabecera únicamente en el archivo de configuración del servidor proxy.
-![Imagen configuración servidor proxy](../assets/images/Practica2.3/cabecera-serverpryx.png)
+![Imagen configuración servidor proxy](../../assets/images/Practica2.3/cabecera-serverpryx.png)
 
 2. Reiniciamos nginx.
 
 3. Comprobamos que podemos acceder sin problema.
 
 4. Con las herramientas de desarrollador comprobamos que la petición ha pasado por el proxy inverso que ha añadido la cabecera en la respuesta: 
-![Cabecera Host](../assets/images/Practica2.3/cabecera_host1.png)
+![Cabecera Host](../../assets/images/Practica2.3/cabecera_host1.png)
 
 5. Hacemos lo mismo con el servidor web. Esta vez el Nombre_del_host será servidor_web_acoronado. 
 
 Si hemos configurado todo bien, al examinar las peticiones podremos ver las dos cabeceras, la del servidor proxy y la
 del servidor web.
 
-![Cabecera Host 2](../assets/images/Practica2.3/cabecera_host2.png)
+![Cabecera Host 2](../../assets/images/Practica2.3/cabecera_host2.png)
 
 Tras esto, ya tendremos nuestro servidor proxy creado y funcionando.

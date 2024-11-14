@@ -3,7 +3,7 @@
 ## Requisitos antes de comenzar la práctica
 
 !!! warning "Atención"
-    - No iniciar esta practica hasta haber completado la [práctica2.1](./Practica2.1.md)
+    - No iniciar esta practica hasta haber completado la [práctica2.1](Practica2.1.md)
 
 ## Introducción
 
@@ -44,9 +44,9 @@ sudo sh -c "echo -n 'vuestro_nombre:' >> /etc/nginx/.htpasswd"
 
 Se vería así:
 
-![Imagen creación usuario](../assets/images/Practica2.2/creacionusuario1.png)
+![Imagen creación usuario](../../assets/images/Practica2.2/creacionusuario1.png)
 
-![Imagen creación usuario2](../assets/images/Practica2.2/creacionusuario2.png)
+![Imagen creación usuario2](../../assets/images/Practica2.2/creacionusuario2.png)
 
 Y para la creación de la contraseña,
 
@@ -54,9 +54,9 @@ Y para la creación de la contraseña,
 sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 ```
 
-![Imagen creación contraseña](../assets/images/Practica2.2/creacioncontraseña1.png)
+![Imagen creación contraseña](../../assets/images/Practica2.2/creacioncontraseña1.png)
 
-![Imagen creación contraseña](../assets/images/Practica2.2/creacioncontraseña2.png)
+![Imagen creación contraseña](../../assets/images/Practica2.2/creacioncontraseña2.png)
 
 
 Este proceso se podrá repetir para tantos usuarios como haga falta.
@@ -94,7 +94,7 @@ fichero que previamente hemos creado con la **```directiva auth_basic_user_file`
 En nuestro caso al tener configurado el sitio web con https añadiremos este bloque en el apartado de https,
 ya que http, se encarga de reenviar automáticamente la petición a https:
 
-![Imagen configuración 1](../assets/images/Practica2.2/configlocation1.png)
+![Imagen configuración 1](../../assets/images/Practica2.2/configlocation1.png)
 
 Una vez terminada la configuración deberemos reiniciar el servicio para que se aplique la nueva configuración:
 
@@ -109,14 +109,14 @@ sudo systemctl restart nginx.service
 
 - Para esto abriremos una ventana de navegación e intentaremos acceder a la web y como podemos ver solicita la autenticación
 
-![Imagen solicitud autenticación](../assets/images/Practica2.2/intentoacceso1.png)
+![Imagen solicitud autenticación](../../assets/images/Practica2.2/intentoacceso1.png)
 
 !!! note "Comprobación 2"
     Comprueba que si decides cancelar la autenticación, se te negará el acceso al sitio con un error. ¿Qué error es?
 
 - Sí cancelamos la autenticación, saldrá el error 401 Authorization Required
 
-![Imagen de cancelación autenticación](../assets/images/Practica2.2/AuthorizationRequired.png)
+![Imagen de cancelación autenticación](../../assets/images/Practica2.2/AuthorizationRequired.png)
 
 ### Tareas 
 
@@ -128,9 +128,9 @@ sudo systemctl restart nginx.service
 - Primero intentamos entrar con un usuario llamado pepe péro este al ser erróneo no nos deja acceder quedan reflejados en ambos .log
     posteriormente si intentamos acceder con el usuario correcto si nos dejara.
 
-![Imagen access.log](../assets/images/Practica2.2/acceslog.png)
+![Imagen access.log](../../assets/images/Practica2.2/acceslog.png)
 
-![Imagen error.log](../assets/images/Practica2.2/errorlog.png)
+![Imagen error.log](../../assets/images/Practica2.2/errorlog.png)
 
 !!! question "Tarea2"
     Borra las dos líneas que hacen referencia a la autenticación básica en el location del directorio raíz. Tras ello, añade un nuevo location debajo con la autenticación básica para el archivo/sección contact.html únicamente. 
@@ -207,11 +207,11 @@ location / {
 
 Al intentar acceder desde el navegador nos mostrará este error:
 
-![Imagen error forbidden](../assets/images/Practica2.2/403forbidden.png)
+![Imagen error forbidden](../../assets/images/Practica2.2/403forbidden.png)
 
 Y en error.log quedaría reflejado así:
 
-![Imagen error.log 2](../assets/images/Practica2.2/errorlog2.png)
+![Imagen error.log 2](../../assets/images/Practica2.2/errorlog2.png)
 
 !!! question "Tarea2"
     Configura Nginx para que desde tu máquina anfitriona se tenga que tener tanto una IP válida como un usuario válido, ambas cosas a la vez, y comprueba que sí puede acceder sin problemas
@@ -233,9 +233,9 @@ location / {
 
 Tras esto intentaremos acceder a nuestra web y como podemos ver nos deja.
 
-![Imagen acceso completado](../assets/images/Practica2.2/accesoIpyUsuario.png)
+![Imagen acceso completado](../../assets/images/Practica2.2/accesoIpyUsuario.png)
 
-![Imagen access log2](../assets/images/Practica2.2/acceslog2.png)
+![Imagen access log2](../../assets/images/Practica2.2/acceslog2.png)
 
 ## Cuestiones finales
 

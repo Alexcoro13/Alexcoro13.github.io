@@ -15,7 +15,7 @@ Para saber si este certificado es válido deberemos consultar a la Autoridad de 
 
 Las CA son entidades que emiten certificados y su funcionamiento se basa en la confianza. Además, los navegadores web tienen pre cargadas las Autoridades de Certificación en las que confían por defecto a la hora de navegar por webs HTTPS.
 
-![Certificados firefox](../assets/images/Practica2.5/certificados_firefox.png);
+![Certificados firefox](../../assets/images/Practica2.5/certificados_firefox.png);
 
 ## Tarea
 
@@ -57,7 +57,7 @@ Podemos crear el certificado y las claves de forma simultánea con un único com
 
 El comando quedaría así:
 
-![Creación certificado](../assets/images/Practica2.5/creacion_certificado.png)
+![Creación certificado](../../assets/images/Practica2.5/creacion_certificado.png)
 
 ### Configuración SSL en el proxy inverso
 
@@ -82,7 +82,7 @@ server {
 }
 ```
 
-![Config NGINX](../assets/images/Practica2.5/configuracion_nginx.png)
+![Config NGINX](../../assets/images/Practica2.5/configuracion_nginx.png)
 
 Donde estamos diciendo que:
 
@@ -100,7 +100,7 @@ de protocolos y los tipos de cifrados considerados seguros a día de hoy.
      Si ahora intentamos acceder a **https://balanceo** debería de saltar un aviso de seguridad debido a que nuestro certificado es autofirmado.
 
 
-![Riesgo potencial](../assets/images/Practica2.5/riesgo_potencial.png)
+![Riesgo potencial](../../assets/images/Practica2.5/riesgo_potencial.png)
 
 - A pesar de esto recalcar que no pasa nada, ya que hemos sido nosotros los que hemos creado este certificado.
 
@@ -108,19 +108,19 @@ Para comprobar que los datos del certificado son correctos podemos comprobarlo a
 
 1. Pulsamos en el candado de la barra de búsqueda
 
-![Candado 1](../assets/images/Practica2.5/candado1.png)
+![Candado 1](../../assets/images/Practica2.5/candado1.png)
 
 2. Le damos a más información
 
-![Más información](../assets/images/Practica2.5/mas_info.png)
+![Más información](../../assets/images/Practica2.5/mas_info.png)
 
 3. Y por último, ver certificado:
 
-![Ver certificado](../assets/images/Practica2.5/ver_certificado.png)
+![Ver certificado](../../assets/images/Practica2.5/ver_certificado.png)
 
 4. Vemos los detalles del certificado:
 
-![Detalles certificado](../assets/images/Practica2.5/detalles_certificado.png)
+![Detalles certificado](../../assets/images/Practica2.5/detalles_certificado.png)
 
 
 
@@ -144,7 +144,7 @@ server{
 }
 ```
 
-![Redirección HTTPS](../assets/images/Practica2.5/redireccion_https.png)
+![Redirección HTTPS](../../assets/images/Practica2.5/redireccion_https.png)
 
 Con esta configuración estamos que:
 
@@ -161,7 +161,7 @@ Con esta configuración estamos que:
 
 1. Eliminamos las lineas listen
 
-![Sin listen](../assets/images/Practica2.5/sin_listen.png)
+![Sin listen](../../assets/images/Practica2.5/sin_listen.png)
 
 2. Reiniciamos el servicio
 
@@ -169,17 +169,17 @@ Con esta configuración estamos que:
 
 3. Comprobamos que cuando entramos en **http://balanceo** nos redirige a HTTPS
 
-![Redirección](../assets/images/Practica2.5/redireccion_tarea1.png)
+![Redirección](../../assets/images/Practica2.5/redireccion_tarea1.png)
 
 4. Access logs
 
     - HTTP_ACCESS.log
 
-    ![HTTP ACCESS](../assets/images/Practica2.5/http_access.png)
+    ![HTTP ACCESS](../../assets/images/Practica2.5/http_access.png)
 
     - HTTPS_ACCESS.log
 
-    ![HTTPS ACCESS](../assets/images/Practica2.5/https_access.png)
+    ![HTTPS ACCESS](../../assets/images/Practica2.5/https_access.png)
 
 ## Cuestiones finales
 
@@ -210,7 +210,7 @@ Con esta configuración estamos que:
 !!! note "Cuestión 2"
     - Imaginad que intentamos acceder a nuestro sitio web HTTPS y nos encontramos con el siguiente error:
 
-    ![Conexion no segura](../assets/images/Practica2.5/conexion-nosegura.png)
+    ![Conexion no segura](../../assets/images/Practica2.5/conexion-nosegura.png)
 
     - Investigad qué está pasando y como se ha de solucionar.
 

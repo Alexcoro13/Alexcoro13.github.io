@@ -4,7 +4,7 @@
 ## Requisitos antes de comenzar la práctica
 
 !!! warning "Atención"
-    - No iniciar esta practica hasta haber completado la [práctica2.3](./Practica2.3.md)
+    - No iniciar esta practica hasta haber completado la [práctica2.3](Practica2.3.md)
 
 --- 
 
@@ -194,9 +194,9 @@ Si accedéis a vuestro sitio web, debéis poder seguir accediendo sin problemas.
 
 Y como podemos ver el servidor proxy hace el balanceo y nos muestra, ambas páginas de los distintos servidores
 
-![alt text](../assets/images/Practica2.4/comprobacion_servidor1.png)
+![alt text](../../assets/images/Practica2.4/comprobacion_servidor1.png)
 
-![Comprobación server 2](../assets/images/Practica2.4/comprobación_servidor2.png)
+![Comprobación server 2](../../assets/images/Practica2.4/comprobación_servidor2.png)
 
 
 ### Comprobación del balanceo de carga cuando cae un servidor
@@ -209,19 +209,19 @@ Nuestro balanceador de carga está constantemente monitorizando “la salud” d
 
 - Para esto apagaremos el primer servidor con el comando ```sudo poweroff``` 
 
-![Apagado servidor 1](../assets/images/Practica2.4/apagado_servidor1.png)
+![Apagado servidor 1](../../assets/images/Practica2.4/apagado_servidor1.png)
 
 Y como podemos ver, el servidor proxy solo nos muestra la página alojada en el servidor web 2
 
-![Comprobación servidor 2 apagado](../assets/images/Practica2.4/comprobacion_servidor2-2.png);
+![Comprobación servidor 2 apagado](../../assets/images/Practica2.4/comprobacion_servidor2-2.png);
 
 - Ahora para comprobar si apagando el segundo nos manda al primero hacemos encendemos el primero y apagamos el segundo con el comando ```poweroff```
 
-![Apagado servidor 2](../assets/images/Practica2.4/apagado_servidor2.png)
+![Apagado servidor 2](../../assets/images/Practica2.4/apagado_servidor2.png)
 
 Y como se puede ver, el servidor proxy solo nos muestra la página alojada en el servidor web 1.
 
-![Comprobación servidor 1 apagado](../assets/images/Practica2.4/comprobación_servidor1-1.png)
+![Comprobación servidor 1 apagado](../../assets/images/Practica2.4/comprobación_servidor1-1.png)
 
 ## Cuestiones
 

@@ -18,7 +18,7 @@ systemctl status nginx
 
 En la consola debería de salir lo siguiente, si saliera verde y mostrara que está activado entonces nginx está instalado correctamente.
 
-![Imagen consola systemctl](../assets/images/Practica2.1/systemctl-status-nginx.png)
+![Imagen consola systemctl](../../assets/images/Practica2.1/systemctl-status-nginx.png)
 
 ### Creación de la carpeta del sitio web
 
@@ -56,7 +56,7 @@ sudo chmod -R 755 /var/www/nombre_web
 
 Si hemos seguido bien estos pasos al hacer un ```ls -l /var/www/nombre_web``` podremos observar que está bien.
 
-![Imagen permisos y propietarios](../assets/images/Practica2.1/permisos-y-propietario.png)
+![Imagen permisos y propietarios](../../assets/images/Practica2.1/permisos-y-propietario.png)
 
 Por último para comprobar que todo está funcionando correctamente nos conectaremos a la web desde nuestro ordenador para esto en el navegador pondremos la siguiente dirección:
 
@@ -66,7 +66,7 @@ http://ip-máquina-virtual
 
 Si hemos conseguido conectarnos el navegador mostrará la página web alojada en el servidor, lo que sería algo asi.
 
-![Imagen conexión a la web desde nuestro ordenador](../assets/images/Practica2.1/welcome-to-nginx.png)
+![Imagen conexión a la web desde nuestro ordenador](../../assets/images/Practica2.1/welcome-to-nginx.png)
 
 ## Configuración de servidor web NGINX
 
@@ -103,9 +103,9 @@ server {
 La directiva root debe ir seguida de la ruta absoluta dónde se encuentre el archivo index.html de nuestra página web. En mi caso es ```/var/www/practica2-1/html``` y
 se vería algo asi:
 
-![Imagen nano configuración de sites avialable](../assets/images/Practica2.1/nano-configuracion-sites-aviable.png)
+![Imagen nano configuración de sites avialable](../../assets/images/Practica2.1/nano-configuracion-sites-aviable.png)
 
-![Imagen ls -l de sites-availabe](../assets/images/Practica2.1/ls-l-sites-availabe.png)
+![Imagen ls -l de sites-availabe](../../assets/images/Practica2.1/ls-l-sites-availabe.png)
 
 Por último crearemos un enlace simbólico entre este archivo y la ruta de los sitios que están habilitados.
 
@@ -115,7 +115,7 @@ sudo ln -s /etc/nginx/sites-available/nombre_web /etc/nginx/sites-enabled/
 
 Tras esto haremos ejecutaremos el comando ``` ls -l /etc/nginx/sites-enabled/``` y nos deberá salir el enlace simbólico.
 
-![Imagen ls -l de sites enabled](../assets/images/Practica2.1/ls-l-sites-enabled.png)
+![Imagen ls -l de sites enabled](../../assets/images/Practica2.1/ls-l-sites-enabled.png)
 
 Por último reiniciaremos el servidor para que se aplique la configuración
 
@@ -141,12 +141,12 @@ IP_SERVIDOR nombre_web
 
 Tras haberla añadido debería verse algo así:
 
-![Imagen tras la edición de /etc/hosts](../assets/images/Practica2.1/edicion-etc-hosts.png)
+![Imagen tras la edición de /etc/hosts](../../assets/images/Practica2.1/edicion-etc-hosts.png)
 
 Si hemos seguido todos estos pasos y no se ha producido un error, al introducir ```http://practica2-1``` en el navegador de nuestra
 máquina anfitriona este nos mostrara la página web alojada en nuestro servidor.
 
-![Imagen contenido de la web](../assets/images/Practica2.1/index-de-web-desde-anfitrion.png)
+![Imagen contenido de la web](../../assets/images/Practica2.1/index-de-web-desde-anfitrion.png)
 
 ### Comprobar registros del servidor
 
@@ -158,7 +158,7 @@ Comprobad que las peticiones se están registrando correctamente en los archivos
 
 Y como podemos observar en acces.log ya han quedado registradas las solicitudas para conectarnos
 
-![Imagen acces.log](../assets/images/Practica2.1/access-log.png)
+![Imagen acces.log](../../assets/images/Practica2.1/access-log.png)
 
 ## FTP
 
@@ -193,7 +193,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/privat
 
 Tras introducir este comando nos saldrá algo asi:
 
-![Imagen creación claves SSL](../assets/images/Practica2.1/creacion-claves-ssl.png)
+![Imagen creación claves SSL](../../assets/images/Practica2.1/creacion-claves-ssl.png)
 
 Una vez realizados estos pasos, procederemos a realizar la configuración de VSFTPD. Es muy simple y solamente
 necesitaremos editar el archivo de configuración del servicio.
@@ -230,7 +230,7 @@ local_root=/home/nombre_usuario/ftp
 
 Siendo local_root la ruta absoluta a la carpeta que creamos anteriormente en nuestro usuario, se vería algo asi:
 
-![Imagen configuración vsftpd.conf](../assets/images/Practica2.1/vsftpd-conf.png)
+![Imagen configuración vsftpd.conf](../../assets/images/Practica2.1/vsftpd-conf.png)
 
 Tras guardar los cambios reiniciaremos el servicio para que se apliquen.
 
@@ -246,7 +246,7 @@ sudo systemctl status vsftpd
 
 Y tendría que salir algo así:
 
-![Imagen status vsftpd](../assets/images/Practica2.1/status-vsftpd.png)
+![Imagen status vsftpd](../../assets/images/Practica2.1/status-vsftpd.png)
 
 ### Comprobación correcto funcionamiento FTP
 
@@ -263,7 +263,7 @@ La conexión se puede realizar de dos formas:
 
 Para esto abriremos Filezilla e introduciremos los datos necesarios para realizar la conexión.
 
-![Imagen Filezilla datos](../assets/images/Practica2.1/filezilla-datos.png)
+![Imagen Filezilla datos](../../assets/images/Practica2.1/filezilla-datos.png)
 
 
 - La IP de nuestra máquina virtual en el apartado de servidor.
@@ -273,7 +273,7 @@ Para esto abriremos Filezilla e introduciremos los datos necesarios para realiza
 
 Durante la conexión filezilla nos avisará de que el certificado es desconocido, le daremos a aceptar, ya que no es peligro pués lo hemos generado nosotros mismos:
 
-![Imagen Certificado Filezilla](../assets/images/Practica2.1/certificado-desconocido.png)
+![Imagen Certificado Filezilla](../../assets/images/Practica2.1/certificado-desconocido.png)
 
 Tras haber establecido la conexión nos conectaremos automáticamente a la carpeta ```/home/acoronado/ftp``` de la máquina virtual
 
@@ -281,15 +281,15 @@ Si lo que quisiéramos conectarnos por **SFTP** sería el mismo proceso, solo qu
 
 Al conectarnos Filezilla nos también nos avisará sobre la clave desconocida, le daremos aceptar y ya tendremos acceso al servidor mediante **SFTP**
 
-![Imagen clave Filezilla](../assets/images/Practica2.1/clave-desconocida.png)
+![Imagen clave Filezilla](../../assets/images/Practica2.1/clave-desconocida.png)
 
 Posteriorménte buscamos la carpeta de nuestro ordenador donde hemos creado un archivo .txt de prueba(en la parte izquierda de la pantalla) y en la parte derecha de la pantalla, buscaremos la carpeta donde queremos subirla. Con un doble clic o arrastrando el archivo hacia la derecha, subiremos una copia al servidor.
 
-![Imagen subida archivo prueba](../assets/images/Practica2.1/subida-archivo-prueba.png)
+![Imagen subida archivo prueba](../../assets/images/Practica2.1/subida-archivo-prueba.png)
 
 Y como podemos ver al hacer un ```ls -l /home/acoronado/ftp``` podemos ver que el archivo está en la máquina virtual
 
-![Imagen ls -l ftp](../assets/images/Practica2.1/ls-l-ftp-archivo-prueba.png)
+![Imagen ls -l ftp](../../assets/images/Practica2.1/ls-l-ftp-archivo-prueba.png)
 
 ## HTTPS
 
@@ -306,7 +306,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/
 
 Y se verá así tras generar la clave:
 
-![Generación clave HTTPS](../assets/images/Practica2.1/clave-https.png)
+![Generación clave HTTPS](../../assets/images/Practica2.1/clave-https.png)
 
 Tras esto deberemos ir al archivo de configuración de nuestro sitio ubicado en ```/etc/nginx/sites-availabe/practica2-1``` donde cambiaremos algunos bloques
 para que se use el protocolo HTTPS.
@@ -365,7 +365,7 @@ sudo systemctl status nginx
 
 Debería aparecernos así:
 
-![Imagen estado post config https](../assets/images/Practica2.1/estado-nginx-post-https.png)
+![Imagen estado post config https](../../assets/images/Practica2.1/estado-nginx-post-https.png)
 
 ### Comprobaciones HTTPS
 
@@ -374,11 +374,11 @@ Por último comprobaremos que podemos conectarnos desde nuestra maquina anfitrio
 Al intentar acceder firefox nos avisará de que el certificado de seguridad no es válido, y que se trata de una clave autofirmada. Pero como lo
 hemos generado nosotros no hay problema solo deberemos darle ha avanzado y continuar.
 
-![Imagen advertencia firefox](../assets/images/Practica2.1/advertencia-firefox.png)
+![Imagen advertencia firefox](../../assets/images/Practica2.1/advertencia-firefox.png)
 
 Tras esto nos mostrara la pagina:
 
-![Imagen de la pagina en HTTPS](../assets/images/Practica2.1/web-desde-https.png)
+![Imagen de la pagina en HTTPS](../../assets/images/Practica2.1/web-desde-https.png)
 
 Para finalizar introduciremos en el navegador ```http://practica2-1``` para comprobar que el servidor nos redirige a HTTPS. Si todo está bien, nos mostrará
 el mismo aviso anterior y nos redirija a la página usando el protocolo ***https***
