@@ -25,6 +25,7 @@ theme:
   features:
     - toc.integrate
     - navigation.footer
+    - content.code.copy
 
 
 markdown_extensions:
@@ -36,6 +37,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets:
   - pymdownx.superfences:
+  - pymdownx.tabbed:
+      alternate_style: true
   
   - admonition
   - pymdownx.details
