@@ -51,10 +51,6 @@ Además, se ocupa de las dependencias de cada paquete.
 
 Un entorno virtual es una forma de tener múltiples instancias paralelas del intérprete de Python, cada una con diferentes conjuntos de paquetes y diferentes configuraciones. Cada entorno virtual contiene una copia independiente del intérprete de Python, incluyendo copias de sus utilidades de soporte.
 
-Los paquetes instalados en cada entorno virtual sólo se ven en ese entorno virtual y en ningún otro. Incluso los paquetes grandes y complejos con binarios dependientes de la plataforma pueden ser acorralados entre sí en entornos virtuales.
-
-De esta forma, tendremos entornos independientes entre sí, parecido a como ocurría con los directorios de los proyectos de Node.js. De este modo, los entornos virtuales de Python nos permiten instalar un paquete de Python en una ubicación aislada en lugar de instalarlo de manera global.
-
 ### Pipenv
 
 ```Pipenv``` es una herramienta que apunta a traer todo lo mejor del mundo de empaquetado (bundler, composer, npm, cargo, yarn, etc.) al mundo de Python.
@@ -199,13 +195,12 @@ gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 ```
 
 Donde:
-    - 
 
-    --workers N establece el numero de hilos que queremos utilizar, como ocurría con Node Express. 
+- workers N establece el numero de hilos que queremos utilizar, como ocurría con Node Express. 
 
-    --bind 0.0.0.0:5000 hace que el servidor escuche peticiones por todas las interfaces de red y en el puerto 5000
+- bind 0.0.0.0:5000 hace que el servidor escuche peticiones por todas las interfaces de red y en el puerto 5000
 
-    wsgi:app es el nombre del archivo con extensión .py y app es la instancia de la aplicación Flask dentro del archivo.
+- wsgi:app es el nombre del archivo con extensión .py y app es la instancia de la aplicación Flask dentro del archivo.
 
 Y deberia mostrarnos esto:
 
@@ -229,7 +224,7 @@ Y deberia mostrarnos esto:
     [Service]
     User=acoronado
     Group=www-data
-    Enviorment="/home/acoronado/.local/share/virtualenvs/proyecto-flask1-hKRFb4qr/bin/"
+    Enviroment="/home/acoronado/.local/share/virtualenvs/proyecto-flask1-hKRFb4qr/bin/"
     WorkingDirectory=/var/www/proyecto-flask1
     ExecStart= /home/acoronado/.local/share/virtualenvs/proyecto-flask1-hKRFb4qr/bin/gunicorn --workers 3 --bind unix /var/www/proyecto-flask1/proyecto-flask1.sock wsgi:app
 
@@ -253,7 +248,7 @@ Y deberia mostrarnos esto:
 
     ![Activo](../../assets/images/Practica3.3/status-servicio.png)
 
-4. A continuación creamos un archivo con el nombre de nuestra aplicación y debe estar en /etc/nginx/sites-available/nombre_aplicacion.
+4. A continuación creamos un archivo con el nombre de nuestra aplicación y debe estar en `/etc/nginx/sites-available/nombre_aplicacion.`
 
     ```nginx
     server {
@@ -289,4 +284,186 @@ esto lo haremos modificando el archivo /etc/hosts
     192.168.X.X proyecto www.proyecto
     ```
 
-8. El último paso es comprobar que todo el desplieuge se ha realizado de forma correcta y está funcionando, para ello accedemos desde nuestra máquina anfitrión a:
+8. El último paso es comprobar que todo el despliegue se ha realizado de forma correcta y está funcionando, para ello accedemos desde nuestra máquina anfitrión a:
+
+![Comprobación aplicación desplegada](../../assets/images/Practica3.3/AplicaciónDesplegada.png)
+
+
+## **Ejercicio 1**
+
+!!! note "Ejercicio"
+
+    Repite todo el proceso con la aplicación del siguiente repositorio: ```https://github.com/raul-profesor/Practica-3.5```
+
+    Recuerda que deberás clonar el repositorio en tu directorio ```/var/www```:
+
+    ```git clone https://github.com/raul-profesor/Practica-3.5```
+
+    Y, tras activar el entorno virtual dentro del directorio del repositorio clonado, para instalar las dependencias del proyecto de la aplicación deberás hacer:
+
+    ```pipenv install -r requirements.txt```
+
+    Y un último detalle, si miráis el código del proyecto, que es muy sencillo, veréis que Gunicorn debe iniciarse ahora así:
+
+    ```
+    gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
+    ```
+
+    Y el resto sería proceder tal y como hemos hecho en esta práctica.
+
+1. El primer paso que haremos será clonar el repositorio ```https://github.com/raul-profesor/Practica-3.5``` en la ruta `/var/www` con el siguiente comando:
+
+    ```
+    git clone https://github.com/raul-profesor/Practica-3.5
+    ```
+
+    ![Clonación repositorio app 2](../../assets/images/Practica3.3/clonación-app2.png)
+
+2. Tras haber clonado el repositorio cambiaremos los permisos y grupos de estas carpetas para poder hacer modificaciones
+en las mismas.
+
+    ```
+    sudo chwon -R usuario:www-data ./Practica-3.5
+    sudo chmod -R 775 ./Practica-3.5 
+    ```
+
+    Y como podemos ver, los cambios se han aplicado correctamente
+
+    ![Permisos y usuarios](../../assets/images/Practica3.3/cmabios-practica35.png)
+
+3. Lo siguiente que deberemos hacer sera crear el archivo .env para poder ejecutar el entorno virtual de Python
+en el cual escribiremos lo siguente:
+
+    ```.env
+    FLASK_APP = wsgi.py
+    FLASK_ENV = production
+    ```
+
+    Y ahora ejecutaremos el entorno virtual con `pipenv shell`
+
+    ![Inicialización de Pipenv shell](../../assets/images/Practica3.3/pipenv-shell2.png)
+
+4. A continuación entraremos en el con `cd Practica-3.5` y ejecutamos el siguiente comando
+
+    ```
+    pipenv install -r requirements.txt
+    ```
+    
+    !!! warning
+        Esto instalara todos los paquetes que la aplicación python necesita para
+        funcionar
+
+    ![Instalación de dependencias del proyecto](../../assets/images/Practica3.3/instalacion-dependencias.png)
+
+5. Tras que la instalación de dependencias del proyecto se descargue e instale correctamente deberemos proceder
+con la instalación de gunicorn.
+
+    ```
+    pipenv install gunicorn
+    ```
+
+6. Antes de comenzar con la configuración de gunicorn vamos a comprobar que la página web funciona para eso
+ejecutaremos el comando.
+
+    ```
+    flask run --host '0.0.0.0'
+    ```
+
+    Y como podemos ver, la página web se muestra correctamente
+
+    ![Prueba para ver si págian web se muestra](../../assets/images/Practica3.3/welcome-azure.png)
+
+Una vez que sabemos que la página web se muestra correctamente probaremos con gunicorn
+para ver si también trabaja correctamente
+
+```
+gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
+```
+
+Y nos saldria algo muy parecido a esto
+
+![Prueba gunicorn 2](../../assets/images/Practica3.3/prueba-guinicorn2.png)
+
+Tras esto deberemos averiguar y tomar nota de cual es el path desde el cual se ejecuta gunicorn para configurar
+en unos pasos más adelante un servicio del sistema. Ejecutaremos el siguiente comando:
+
+```
+which gunicorn
+```
+
+![Ubicación gunicorn 2](../../assets/images/Practica3.3/ubicacion-gunicorn2.png)
+
+/home/acoronado/.local/share/virtualenvs/Practica-3.5-fn2PEgVy/bin/gunicorn
+
+1. Lo siguiente que haremos sera crear el archivo de configuración del servicio para que gunicorn se pueda
+ejecutar como servicio en el sistema.
+
+    ```bash
+    [Unit]
+    Description = practica-3.5.service
+    After=network.target
+
+    [Service]
+    User=acoronado
+    Group=www-data
+    Enviorment="/home/acoronado/.local/share/virtualenvs/Practica-3.5-fn2PEgVy/bin/"
+    WorkingDirectory=/var/www/Practica-3.5
+    ExecStart= /home/acoronado/.local/share/virtualenvs/Practica-3.5-fn2PEgVy/bin/gunicorn --workers 4 --bind unix:/var/www/Practica-3.5/Practica-3.5.sock w>
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+    Y para que este archivo se pueda ejecutar introduciremos los siguientes comandos en la consola
+
+    ```
+        sudo systemctl enable practica-3.5.service
+        sudo systemctl start practica-3.5.service
+    ```
+
+    ![activación-servicio-gunicorn2](../../assets/images/Practica3.3/activacion-gunicorn2.png)
+
+    Como se puede ver, el servicio esta activo y corriendo
+
+    ![Verificación de estado servicio gunicorn2](../../assets/images/Practica3.3/status2.png)
+
+2. Tras esot crearemos un archivo de configuración de nginx con el nombre de nuestra aplicación el cual estara ubicado en 
+`/etc/nginx/sites-availabe/nombre`
+
+    ```
+    server {
+        listen 80;
+        server_name practica-3_5 www.practica-3_5;
+
+        access_log /var/log/nginx/practica-3.5.access.log;
+        error_log /var/log/nginx/practica-3.5.error.log;
+
+        location / {
+                include proxy_params;
+                proxy_pass http://unix:/var/www/Practica-3.5/Practica-3.5.sock;
+        }
+    }
+    ```
+
+3. Ahora deberemos crear un link simbólico del archivo de sitios webs disponibles al de sitios web activos:
+
+    ```
+    sudo ln -s /etc/nginx/sites-available/nombre /etc/nginx/sites-enabled/
+    ```
+
+    ![Enlace simbolico practica-3.5 sites-enabled](../../assets/images/Practica3.3/enlace-simbolico2.png)
+
+4. Por último reiniciaremos el servicio de nignx
+
+    ```
+    sudo systemctl restart nginx
+    ```
+
+5. Ya lo último que quedaria sería añadir el servidor a nuestra lista de hosts conocidos en nuestra máquina anfitriona
+para poder visitar la web
+
+    ```
+    192.168.X.X practica-3_5 www.practica-3_5
+    ```
+
+    ![Comprobación final pagina 2](../../assets/images/Practica3.3/página2.png)
