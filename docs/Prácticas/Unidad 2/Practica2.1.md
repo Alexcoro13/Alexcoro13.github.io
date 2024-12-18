@@ -317,7 +317,7 @@ sudo nano /etc/nginx/sites-available/practica2-1
 
 En donde añadiremos el siguiente bloque **server**
 
-```bash
+```nginx
 server {
     listen 443 ssl;
     server_name tu_dominio.com www.tu_dominio.com;

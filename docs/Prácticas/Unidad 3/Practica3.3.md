@@ -12,9 +12,9 @@ Servidor Debian con los siguientes paquetes instalados:
 
 ### ¿Qué es un framework?
 
-Actualmente en el desarrollo moderno de aplicaciones web se utilizan distintos Frameworks que son herramientas que nos dan un esquema de trabajo y una serie de utilidades y funciones que nos facilita y nos abstrae de la construcción de páginas web dinámicas.
+Actualmente, en el desarrollo moderno de aplicaciones web se utilizan distintos Frameworks que son herramientas que nos dan un esquema de trabajo y una serie de utilidades y funciones que nos facilita y nos abstrae de la construcción de páginas web dinámicas.
 
-En general los Frameworks están asociado a lenguajes de programación (Ruby on Rails (Ruby), Symphony (PHP)), en el mundo de Python el más conocido es Django pero Flask es una opción que quizás no tenga una curva de aprendizaje tan elevada pero nos posibilita la creación de aplicaciones web igual de complejas de las que se pueden crear en Django.
+En general los Frameworks están asociados a lenguajes de programación (Ruby on Rails (Ruby), Symphony (PHP)), en el mundo de Python el más conocido es Django, pero Flask es una opción que quizás no tenga una curva de aprendizaje tan elevada, pero nos posibilita la creación de aplicaciones web igual de complejas de las que se pueden crear en Django.
 
 ### Flask
 
@@ -22,7 +22,7 @@ En la actualidad existen muchas opciones para crear páginas web y muchos lengua
 
 Flask es un “micro” Framework escrito en Python y concebido para facilitar el desarrollo de Aplicaciones Web bajo el patrón MVC.
 
-La palabra “micro” no designa a que sea un proyecto pequeño o que nos permita hacer páginas web pequeñas sino que al instalar Flask tenemos las herramientas necesarias para crear una aplicación web funcional pero si se necesita en algún momento una nueva funcionalidad hay un conjunto muy grande extensiones (plugins) que se pueden instalar con Flask que le van dotando de funcionalidad.
+La palabra “micro” no designa a que sea un proyecto pequeño o que nos permita hacer páginas web pequeñas, sino que al instalar Flask tenemos las herramientas necesarias para crear una aplicación web funcional, pero si se necesita en algún momento una nueva funcionalidad hay un conjunto muy grande extensiones (plugins) que se pueden instalar con Flask que le van dotando de funcionalidad.
 
 ![Flask](../../assets/images/Practica3.3/flask.jpg)
 
@@ -55,7 +55,7 @@ Un entorno virtual es una forma de tener múltiples instancias paralelas del int
 
 ```Pipenv``` es una herramienta que apunta a traer todo lo mejor del mundo de empaquetado (bundler, composer, npm, cargo, yarn, etc.) al mundo de Python.
 
-Automáticamente crea y maneja un entorno virtual para tus proyectos, también permite agregar/eliminar paquetes desde tu Pipfile así como como instalar/desinstalar paquetes. También genera lo más importante , el archivo Pipfile.lock, que es usado para producir determinado build.
+Automáticamente, crea y maneja un entorno virtual para tus proyectos, también permite agregar/eliminar paquetes desde tu Pipfile así como instalar/desinstalar paquetes. También genera lo más importante, el archivo Pipfile.lock, que es usado para producir determinado build.
 
 ## Despliegue
 
@@ -87,7 +87,7 @@ Automáticamente crea y maneja un entorno virtual para tus proyectos, también p
     sudo mkdir /var/www/proyecto-flask1
     ```
 
-5. Al crearlo con sudo, los permisos pertenecen a root:
+5. Al crearlo con SUDO, los permisos pertenecen a root:
 
     ![ls -l /var/www](../../assets/images/Practica3.3/ls-var-www.png)
 
@@ -174,8 +174,8 @@ propiamente dicha será ```application.py``` y ```wsgi.py``` se encargará únic
 
         ![nano wsgi](../../assets/images/Practica3.3/nano-wsgi.png)
 
-13. Corramos ahora nuestra aplicación a modo de comprobación con el servidor web integraado de Flask. Si especificamos 
-la direccion 0.0.0.0 lo que le estamos diciendo es que escuche en todas sus interfaces, si las tuviera:
+13. Corramos ahora nuestra aplicación a modo de comprobación con el servidor web integrado de Flask. Si especificamos 
+la dirección 0.0.0.0 lo que le estamos diciendo es que escuche en todas sus interfaces, si las tuviera:
 
     ```
     flask run --host '0.0.0.0'
@@ -196,17 +196,17 @@ gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 
 Donde:
 
-- workers N establece el numero de hilos que queremos utilizar, como ocurría con Node Express. 
+- workers N establece el número de hilos que queremos utilizar, como ocurría con Node Express. 
 
 - bind 0.0.0.0:5000 hace que el servidor escuche peticiones por todas las interfaces de red y en el puerto 5000
 
 - wsgi:app es el nombre del archivo con extensión .py y app es la instancia de la aplicación Flask dentro del archivo.
 
-Y deberia mostrarnos esto:
+Y debería mostrarnos esto:
 
 ![Gunicorn prueba](../../assets/images/Practica3.3/gunicorn-prueba.png)
 
-1. Dentro del entorno virtual, debemos tomar nota de cual es el path desde la que se ejecuta gunicorn para poder configurar más adelante un servicio del sistema. Podemos averigurarlo así:
+1. Dentro del entorno virtual, debemos tomar nota de cuál es el path desde la que se ejecuta gunicorn para poder configurar más adelante un servicio del sistema. Podemos averiguarlo así:
 
     ```
     which gunicorn
@@ -244,7 +244,7 @@ Y deberia mostrarnos esto:
     systemctl status nombre_servicio
     ```
 
-    Y si todo ha ido bien al ejecutar ```systemctl status nombre_servicio``` deberia de salirnos como activo
+    Y si todo ha ido bien al ejecutar ```systemctl status nombre_servicio``` debería de salirnos como activo
 
     ![Activo](../../assets/images/Practica3.3/status-servicio.png)
 
@@ -277,14 +277,14 @@ Y deberia mostrarnos esto:
     sudo systemctl restart nginx
     ```
 
-7. Ya no podremos acceder por IP a nuestra aplicación ya que ahora está siendo servida por Gunicorn y Nginx, necesitamos acceder por su server_name.
+7. Ya no podremos acceder por IP a nuestra aplicación, ya que ahora está siendo servida por Gunicorn y Nginx, necesitamos acceder por su server_name.
 esto lo haremos modificando el archivo /etc/hosts
 
     ```
     192.168.X.X proyecto www.proyecto
     ```
 
-8. El último paso es comprobar que todo el despliegue se ha realizado de forma correcta y está funcionando, para ello accedemos desde nuestra máquina anfitrión a:
+8. El último paso es comprobar que todo el despliegue se ha realizado de forma correcta y está funcionando, para ello accedemos desde nuestra máquina anfitriona a:
 
 ![Comprobación aplicación desplegada](../../assets/images/Practica3.3/AplicaciónDesplegada.png)
 
@@ -331,8 +331,8 @@ en las mismas.
 
     ![Permisos y usuarios](../../assets/images/Practica3.3/cmabios-practica35.png)
 
-3. Lo siguiente que deberemos hacer sera crear el archivo .env para poder ejecutar el entorno virtual de Python
-en el cual escribiremos lo siguente:
+3. Lo siguiente que deberemos hacer será crear el archivo .env para poder ejecutar el entorno virtual de Python
+en el cual escribiremos lo siguiente:
 
     ```.env
     FLASK_APP = wsgi.py
@@ -343,14 +343,14 @@ en el cual escribiremos lo siguente:
 
     ![Inicialización de Pipenv shell](../../assets/images/Practica3.3/pipenv-shell2.png)
 
-4. A continuación entraremos en el con `cd Practica-3.5` y ejecutamos el siguiente comando
+4. A continuación entraremos en él con `cd Practica-3.5` y ejecutamos el siguiente comando
 
     ```
     pipenv install -r requirements.txt
     ```
     
     !!! warning
-        Esto instalara todos los paquetes que la aplicación python necesita para
+        Esto instalará todos los paquetes que la aplicación python necesita para
         funcionar
 
     ![Instalación de dependencias del proyecto](../../assets/images/Practica3.3/instalacion-dependencias.png)
@@ -371,7 +371,7 @@ ejecutaremos el comando.
 
     Y como podemos ver, la página web se muestra correctamente
 
-    ![Prueba para ver si págian web se muestra](../../assets/images/Practica3.3/welcome-azure.png)
+    ![Prueba para ver si página web se muestra](../../assets/images/Practica3.3/welcome-azure.png)
 
 Una vez que sabemos que la página web se muestra correctamente probaremos con gunicorn
 para ver si también trabaja correctamente
@@ -380,11 +380,11 @@ para ver si también trabaja correctamente
 gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 ```
 
-Y nos saldria algo muy parecido a esto
+Y nos saldría algo muy parecido a esto
 
 ![Prueba gunicorn 2](../../assets/images/Practica3.3/prueba-guinicorn2.png)
 
-Tras esto deberemos averiguar y tomar nota de cual es el path desde el cual se ejecuta gunicorn para configurar
+Tras esto deberemos averiguar y tomar nota de cuál es el path desde el cual se ejecuta gunicorn para configurar
 en unos pasos más adelante un servicio del sistema. Ejecutaremos el siguiente comando:
 
 ```
@@ -395,7 +395,7 @@ which gunicorn
 
 /home/acoronado/.local/share/virtualenvs/Practica-3.5-fn2PEgVy/bin/gunicorn
 
-1. Lo siguiente que haremos sera crear el archivo de configuración del servicio para que gunicorn se pueda
+1. Lo siguiente que haremos será crear el archivo de configuración del servicio para que gunicorn se pueda
 ejecutar como servicio en el sistema.
 
     ```bash
@@ -423,14 +423,14 @@ ejecutar como servicio en el sistema.
 
     ![activación-servicio-gunicorn2](../../assets/images/Practica3.3/activacion-gunicorn2.png)
 
-    Como se puede ver, el servicio esta activo y corriendo
+    Como se puede ver, el servicio está activo y corriendo
 
     ![Verificación de estado servicio gunicorn2](../../assets/images/Practica3.3/status2.png)
 
-2. Tras esot crearemos un archivo de configuración de nginx con el nombre de nuestra aplicación el cual estara ubicado en 
+2. Tras esto crearemos un archivo de configuración de nginx con el nombre de nuestra aplicación el cual estará ubicado en 
 `/etc/nginx/sites-availabe/nombre`
 
-    ```
+    ```nginx
     server {
         listen 80;
         server_name practica-3_5 www.practica-3_5;
@@ -451,7 +451,7 @@ ejecutar como servicio en el sistema.
     sudo ln -s /etc/nginx/sites-available/nombre /etc/nginx/sites-enabled/
     ```
 
-    ![Enlace simbolico practica-3.5 sites-enabled](../../assets/images/Practica3.3/enlace-simbolico2.png)
+    ![Enlace simbólico practica-3.5 sites-enabled](../../assets/images/Practica3.3/enlace-simbolico2.png)
 
 4. Por último reiniciaremos el servicio de nignx
 
@@ -459,7 +459,7 @@ ejecutar como servicio en el sistema.
     sudo systemctl restart nginx
     ```
 
-5. Ya lo último que quedaria sería añadir el servidor a nuestra lista de hosts conocidos en nuestra máquina anfitriona
+5. Ya lo último que quedaría sería añadir el servidor a nuestra lista de hosts conocidos en nuestra máquina anfitriona
 para poder visitar la web
 
     ```
