@@ -69,7 +69,7 @@
 ## **Ignorar archivos**
 
 1. Crear en el repositorio local un fichero llamado privado.txt.
-	- Crearemos el fichero con `nano` y lo dejaremos vacio
+	- Crearemos el fichero con `nano` y lo dejaremos vacío
 
 	![Creación archivo privado](../../assets/images/Practica5.1/privado.txt.png)
 
@@ -125,7 +125,7 @@
 
 1. Poner una foto en vuestro perfil de GitHub
 
-	- Para cambiar la foto de perfil deberemos ir a configuración de github y hacer click en cambiar foto
+	- Para cambiar la foto de perfil deberemos ir a configuración de github y hacer clic en cambiar foto
 
 	![Foto sin cambiar](../../assets/images/Practica5.1/foto-sin-cambiar.png)
 
@@ -137,13 +137,13 @@
 2. Poner el doble factor de autentificación en vuestra cuenta de Github
 
 	- Para añadir el doble factor de autentificación deberemos irnos al apartado de 
-	contraseñas y autenticación, en donde añadiremos los metodos de auteticación de doble factor que queramos.
+	contraseñas y autenticación, en donde añadiremos los métodos de autenticación de doble factor que queramos.
 
 	![alt text](../../assets/images/Practica5.1/doble-factor.png)
 
 ## **Uso social de github**
 
-1. Preguntar los nombres de usuario de GitHub de 2 de tus compañeros de clase, búscalos, y sigueles.
+1. Preguntar los nombres de usuario de GitHub de 2 de tus compañeros de clase, búscalos, y síguelos.
 
 	- Buscamos los usuarios y le damos a seguir:
 
@@ -162,7 +162,7 @@
 
 3. Añadir una estrella a los repositorios DEAW del resto de tus compañeros.
 
-	- Para dar un estrella haremos clic en star y así habremos dado una estrella
+	- Para dar una estrella haremos clic en star y así habremos dado una estrella
 
 	![Estrella](../../assets/images/Practica5.1/estrella.png)
 
@@ -233,7 +233,7 @@
 1. Posicionarse en la rama `main`
 2. Hacer un merge de la rama v0.2 en la rama master
 
-	![Mege sin conflicto](../../assets/images/Practica5.1/merge-sin-conflicto.png)
+	![Merge sin conflicto](../../assets/images/Practica5.1/merge-sin-conflicto.png)
 
 ## **Merge con conflicto**
 
@@ -247,7 +247,7 @@
 
 	- Una vez que hemos hecho los cambios en cada rama hacemos un merge y nos indicara que hay un conflicto.
 
-	![mege-conflicto](../../assets/images/Practica5.1/merge-conflicto.png)
+	![merge-conflicto](../../assets/images/Practica5.1/merge-conflicto.png)
 
 	- Para resolverlo nos iremos al archivo y nos quedaremos con los cambios de la rama que queramos	
 
@@ -306,7 +306,7 @@
 
 ## **Ejercicios de creación y actualización de repositorios**
 
-## **Ejercio 1**
+## **Ejercicio 1**
 
 1. Configurar Git definiendo el nombre del usuario, el correo electrónico y activar el coloreado de salida.
 
@@ -348,9 +348,9 @@
 
 1. Comprobar el estado del repositorio.
 
-	- Como hemos podido ver en la anterior captura el repositorio esta vácio
+	- Como hemos podido ver en la anterior captura el repositorio está vacío
 
-2. Crear un fichero indice.txt con el siguiente contenido:
+2. Crear un fichero `indice.txt` con el siguiente contenido:
 
 	![Indice.txt](../../assets/images/Practica5.1/indice.txt.png)
 
@@ -370,7 +370,7 @@
 
 5. Volver a comprobar una vez más el estado del repositorio.
 
-	![Comrpobar estado 2](../../assets/images/Practica5.1/comprobar-estado.png)
+	![Comprobar estado 2](../../assets/images/Practica5.1/comprobar-estado.png)
 
 ## **Ejercicio 4**
 
@@ -382,7 +382,7 @@
 
 ## **Ejercicio 5**
 
-1. Cambiar el fichero indice.txt para que contega lo siguiente:
+1. Cambiar el fichero `indice.txt` para que contenga lo siguiente:
 
 
 2. Mostrar los cambios con respecto a la última versión guardada en el repositorio.
@@ -407,7 +407,7 @@
 
 	![diff commits](../../assets/images/Practica5.1/diff-commits.png)
 
-2. Cambiar el mensaje del último cmmit por "Añadido capitulo 3 sobre gestion de ramas al indice"
+2. Cambiar el mensaje del último commit por "Añadido capítulo 3 sobre gestión de ramas al índice"
 
 	```
 	git commit --amend -m "Añadido capítulo 3 sobre gestión de ramas al índice."
@@ -416,7 +416,7 @@
 
 	![ammend commit](../../assets/images/Practica5.1/ammend-commits.png)
 
-3. Volver a mostrar los ultimos cambios del repositorio.
+3. Volver a mostrar los últimos cambios del repositorio.
 
 	- Esto lo haremos con el mismo comando que en el primer apartado
 
@@ -436,7 +436,7 @@
 
 	![Imagen del historial del repositorio](../../assets/images/Practica5.1/log-repo.png)
 
-2. Crear la carpeta capitulos y crear dentro de ella el fichero capitulo1.txt con el siguiente texto.
+2. Crear la carpeta capítulos y crear dentro de ella el fichero capitulo1.txt con el siguiente texto.
 
 	`El flujo de trabajo básico con Git consiste en: 1- Hacer cambios en el repositorio. 2- Añadir los cambios a la zona de intercambio temporal. 3- Hacer un commit de los cambios.`
 
@@ -452,7 +452,7 @@
 
 ## **Ejercicio 2**
 
-1. Crear el fichero `capitulo2.txt` en la carpeta capitulos con el siguiente texto.
+1. Crear el fichero `capitulo2.txt` en la carpeta capítulos con el siguiente texto.
 
 	`El flujo de trabajo básico con Git consiste en: 1- Hacer cambios en el repositorio. 2- Añadir los cambios a la zona de intercambio temporal. 3- Hacer un commit de los cambios.`
 
@@ -478,7 +478,7 @@
 
 ## **Ejercicio 3**
 
-1. Crear el fichero capitulo3.txt en la carpeta capitulos con el siguiente texto.
+1. Crear el fichero capitulo3.txt en la carpeta capítulos con el siguiente texto.
 
 	`	Git permite la creación de ramas lo que permite tener distintas versiones del mismo proyecto y trabajar de manera simultanea en ellas.`
 
@@ -502,7 +502,7 @@
 
 	![Id primer commit](../../assets/images/Practica5.1/id-primer-commit.png)
 
-	- Y el id que vemos a la izquierda es el id de cada commit en este caso el numero 1 es `f09939b`.
+	- Y el ID que vemos a la izquierda es el ID de cada commit en este caso el número 1 es `f09939b`.
 
 	- Ahora hacemos la diferencia con este comando:
 
@@ -542,10 +542,10 @@
 
 ## **Ejercicio 1**
 
-Eliminar la última línea del fichero indice.txt y guardarlo.
+Eliminar la última línea del fichero `indice.txt` y guardarlo.
 
 Comprobar el estado del repositorio.
 
-Deshacer los cambios realizados en el fichero indice.txt para volver a la versión anterior del fichero.
+Deshacer los cambios realizados en el fichero `indice.txt` para volver a la versión anterior del fichero.
 
 Volver a comprobar el estado del repositorio.
