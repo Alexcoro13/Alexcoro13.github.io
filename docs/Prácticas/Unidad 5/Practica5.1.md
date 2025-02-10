@@ -1,4 +1,4 @@
-# **Ejercicios de Git y Github**
+# **Práctica 5.1 - Ejercicios de Git y Github**
 
 ## **Repositorio DEAW**
 
@@ -301,3 +301,251 @@
 	- Y nos mostrará algo así
 
 	![Listado de cambios](../../assets/images/Practica5.1/listado-de-cambios.png)
+
+# **Ejercicios Git y Github II**
+
+## **Ejercicios de creación y actualización de repositorios**
+
+## **Ejercio 1**
+
+1. Configurar Git definiendo el nombre del usuario, el correo electrónico y activar el coloreado de salida.
+
+	- Para configurar el nombre de usuario usaremos el comando:
+
+	```
+	git config user.name nombre_usuario
+	```
+
+	- Para configurar el email de usuario usaremos el comando:
+
+	```
+	git config user.email email_usuario
+	```
+
+	- Y por último configuraremos el coloreado de salida.
+
+	```
+	git config color.ui auto
+	```
+
+	![Configuración de git](../../assets/images/Practica5.1/Configuracion-git.png)
+
+## **Ejercicio 2**
+
+1. Crear un repositorio nuevo con el nombre libro y mostrar su contenido
+
+	- Usaremos los siguientes comandos para crear el repositorio libro:
+
+	```
+	mkdir libro
+	cd libro
+	git init
+	```
+
+	![Contenido del repositorio libro](../../assets/images/Practica5.1/contenido-libro.png)
+
+## **Ejercicio 3**
+
+1. Comprobar el estado del repositorio.
+
+	- Como hemos podido ver en la anterior captura el repositorio esta vácio
+
+2. Crear un fichero indice.txt con el siguiente contenido:
+
+	![Indice.txt](../../assets/images/Practica5.1/indice.txt.png)
+
+3. Comprobar de nuevo el estado del repositorio.
+
+	```
+	git status
+	```
+
+	![Estado Repositorio](../../assets/images/Practica5.1/estado_repositorio.png)
+
+4. Añadir el fichero a la zona de intercambio temporal.
+
+ 	```
+	git add indice.txt
+	```
+
+5. Volver a comprobar una vez más el estado del repositorio.
+
+	![Comrpobar estado 2](../../assets/images/Practica5.1/comprobar-estado.png)
+
+## **Ejercicio 4**
+
+1. Realizar un commit de los últimos cambios con el mensaje “Añadido índice del libro.” y ver el estado del repositorio.
+
+	```
+	git commit -m "Añadido índice del libro"
+	```
+
+## **Ejercicio 5**
+
+1. Cambiar el fichero indice.txt para que contega lo siguiente:
+
+
+2. Mostrar los cambios con respecto a la última versión guardada en el repositorio.
+
+	```
+	git diff indice.txt
+	```
+
+	![Diferencia de indice](../../assets/images/Practica5.1/diferencias-indice.png)
+
+3. Hacer un commit de los cambios con el mensaje "Añadido capítulo 3 sobre gestión de ramas"
+
+	![Commit diff](../../assets/images/Practica5.1/Commit-diff.png)
+
+## **Ejercicio 6**
+
+1. Mostrar los cambios de la última versión del repositorio con respecto a la anterior.
+
+	```
+	git diff HEAD~1 HEAD
+	```
+
+	![diff commits](../../assets/images/Practica5.1/diff-commits.png)
+
+2. Cambiar el mensaje del último cmmit por "Añadido capitulo 3 sobre gestion de ramas al indice"
+
+	```
+	git commit --amend -m "Añadido capítulo 3 sobre gestión de ramas al índice."
+	```
+	
+
+	![ammend commit](../../assets/images/Practica5.1/ammend-commits.png)
+
+3. Volver a mostrar los ultimos cambios del repositorio.
+
+	- Esto lo haremos con el mismo comando que en el primer apartado
+
+	![Diff 2](../../assets/images/Practica5.1/diff2.png)
+
+## **Ejercicios de manejo del historial de cambios**
+
+## **Ejercicio 1**
+
+1. Mostrar el historial de cambios del repositorio.
+
+	- Para mostrar el historial de cambios del repositorio lo haremos con el siguiente comando
+
+	```
+	git log
+	```
+
+	![Imagen del historial del repositorio](../../assets/images/Practica5.1/log-repo.png)
+
+2. Crear la carpeta capitulos y crear dentro de ella el fichero capitulo1.txt con el siguiente texto.
+
+	`El flujo de trabajo básico con Git consiste en: 1- Hacer cambios en el repositorio. 2- Añadir los cambios a la zona de intercambio temporal. 3- Hacer un commit de los cambios.`
+
+	![Imagen del capitulo](../../assets/images/Practica5.1/creacion-carpeta-capitulo.png)
+
+3. Añadir los cambios a la zona de intercambio temporal.
+
+	![Añadir capitulo](../../assets/images/Practica5.1/añadir-capitulo.png)
+
+4. Hacer un commit de los cambios con el mensaje "Añadido capítulo 1." Volver a mostrar de cambios del repositorio.
+
+	![Log capitulo](../../assets/images/Practica5.1/log-capitulo.png)
+
+## **Ejercicio 2**
+
+1. Crear el fichero `capitulo2.txt` en la carpeta capitulos con el siguiente texto.
+
+	`El flujo de trabajo básico con Git consiste en: 1- Hacer cambios en el repositorio. 2- Añadir los cambios a la zona de intercambio temporal. 3- Hacer un commit de los cambios.`
+
+	![Capitulo 2.txt](../../assets/images/Practica5.1/capitulo2.png)
+
+2. Añadir los cambios a la zona de intercambio temporal.
+
+	![Capitulo2.txt add](../../assets/images/Practica5.1/add-capitulo2.png)
+
+3. Hacer un commit de los cambios con el mensaje “Añadido capítulo 2.”
+
+	![Capitulo2.txt commit](../../assets/images/Practica5.1/commit-capitulo.png)
+
+4. Mostrar las diferencias entre la última versión y dos versiones anteriores.
+
+	- Para mostrar las diferencias entre la última versión y dos versiones anteriores lo haremos con el siguiente comando:
+
+	```
+	git diff HEAD~2 HEAD
+	```
+
+	![Diferencia con los 2 commits anteriores](../../assets/images/Practica5.1/diferencia-2-commits.png)
+
+## **Ejercicio 3**
+
+1. Crear el fichero capitulo3.txt en la carpeta capitulos con el siguiente texto.
+
+	`	Git permite la creación de ramas lo que permite tener distintas versiones del mismo proyecto y trabajar de manera simultanea en ellas.`
+
+	![Capitulo 3](../../assets/images/Practica5.1/capitulo3.png)
+
+2. Añadir los cambios a la zona de intercambio temporal.
+
+	![Status Capitulo3](../../assets/images/Practica5.1/Status-Capitulo3.png)
+
+3. Hacer un commit de los cambios con el mensaje “Añadido capítulo 3.”
+
+	![Commit capitulo3](../../assets/images/Practica5.1/commit-capitulo3.png)
+
+4. Mostrar las diferencias entre la primera y la última versión del repositorio.
+
+	- Para hacer esto necesitamos primero tenemos que saber el ID del primer commit:
+
+	```
+	git log
+	```
+
+	![Id primer commit](../../assets/images/Practica5.1/id-primer-commit.png)
+
+	- Y el id que vemos a la izquierda es el id de cada commit en este caso el numero 1 es `f09939b`.
+
+	- Ahora hacemos la diferencia con este comando:
+
+	```
+	git diff f09939b HEAD
+	```
+
+	![Diff primer commit](../../assets/images/Practica5.1/diff-primer-commit.png)
+
+## **Ejercicio 4**
+
+1. Añadir al final del fichero `indice.txt` la siguiente línea:
+
+	`Capítulo 5: Conceptos avanzados`
+
+	![indice.txt-capitulo5](../../assets/images/Practica5.1/indice.txt-capitulo.png)
+
+2. Añadir los cambios a la zona de intercambio temporal.
+
+	![Git status](../../assets/images/Practica5.1/git-status-indice.png)
+
+3. Hacer un commit de los cambios con el mensaje “Añadido capítulo 5 al índice.”.
+
+	![Commit indice capitulo5](../../assets/images/Practica5.1/commit-capitulo5-indice.png)
+
+4. Mostrar quién ha hecho cambios sobre el fichero `indice.txt`.
+
+	- Para mostrar quién ha hecho los cambios usaremos
+
+	```
+	git blame indice.txt
+	```
+
+	![Git blame](../../assets/images/Practica5.1/blame-indice.png)
+
+## **Ejercicios de deshacer cambios**
+
+## **Ejercicio 1**
+
+Eliminar la última línea del fichero indice.txt y guardarlo.
+
+Comprobar el estado del repositorio.
+
+Deshacer los cambios realizados en el fichero indice.txt para volver a la versión anterior del fichero.
+
+Volver a comprobar el estado del repositorio.
