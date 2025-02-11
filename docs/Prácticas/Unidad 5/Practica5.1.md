@@ -25,7 +25,7 @@
 
 ## **README**
 
-1. Crear(si no lo habeís hecho ya) en vuestro repositorio local un documento README.md
+1. Crear(si no lo habeis hecho ya) en vuestro repositorio local un documento README.md
 
 	- Para crear un archivo README.md usaremos el siguiente comando:
 
@@ -302,7 +302,7 @@
 
 	![Listado de cambios](../../assets/images/Practica5.1/listado-de-cambios.png)
 
-# **Ejercicios Git y Github II**
+## **Ejercicios Git y Github II**
 
 ## **Ejercicios de creación y actualización de repositorios**
 
@@ -542,10 +542,411 @@
 
 ## **Ejercicio 1**
 
-Eliminar la última línea del fichero `indice.txt` y guardarlo.
+1. Eliminar la última línea del fichero `indice.txt` y guardarlo.
 
-Comprobar el estado del repositorio.
+	![Borrar-UltimaLinea](../../assets/images/Practica5.1/borrar-ultima-linea.png)
 
-Deshacer los cambios realizados en el fichero `indice.txt` para volver a la versión anterior del fichero.
+2. Comprobar el estado del repositorio.
 
-Volver a comprobar el estado del repositorio.
+	![Comprobación de estado](../../assets/images/Practica5.1/comprobar-estado5.png)
+
+3. Deshacer los cambios realizados en el fichero `indice.txt` para volver a la versión anterior del fichero.
+
+	- Para deshacer los cambios usaremos el siguiente comando:
+
+	```
+	git restore indice.txt
+	```
+
+	![Git restore](../../assets/images/Practica5.1/restore-git.png)
+
+4. Volver a comprobar el estado del repositorio.
+
+	![Comprobar estado 6](../../assets/images/Practica5.1/Comprobar-Estado-6.png)
+
+## **Ejercicio 2**
+
+1. Eliminar la última línea del fichero `indice.txt` y guardarlo.
+
+	![Borrar-ultima linea Indice](../../assets/images/Practica5.1/Borrar-Ultima-LineaIndice.png)
+
+2. Añadir los cambios a la zona de intercambio temporal.
+
+3. Comprobar de nuevo el estado del repositorio.
+
+	![Comprobar estado 7](../../assets/images/Practica5.1/comprobar-estado7.png)
+
+4. Quitar los cambios de la zona de intercambio temporal, pero mantenerlos en el directorio de trabajo.
+
+	- Para quitar los cambios de la zona de intercambio, pero mantenerlos en el directorio de trabajo usaremos el siguiente comando:
+
+	![Git reset](../../assets/images/Practica5.1/git-reset.png)
+
+5. Comprobar de nuevo el estado del repositorio.
+
+	![Comprobar estado 5](../../assets/images/Practica5.1/Comprobar%20estado%205.png)
+
+6. Deshacer los cambios realizados en el fichero `indice.txt` para volver a la versión anterior del fichero.
+
+	```
+	git restore indice.txt
+	```
+
+7. Volver a comprobar el estado del repositorio.
+
+	![Deshacer cambios](../../assets/images/Practica5.1/deshacer-cambios.png)
+
+## **Ejercicio 3**
+
+1. Eliminar la última línea del fichero `indice.txt` y guardarlo.
+
+	![Borrar última línea de índice](../../assets/images/Practica5.1/borrar-ultima.png)
+
+2. Eliminar el fichero `capitulos/capitulo3.txt`.
+
+3. Añadir un fichero nuevo `capitulos/capitulo4.txt` vacío.
+
+4. Añadir los cambios a la zona de intercambio temporal.
+
+5. Comprobar de nuevo el estado del repositorio.
+
+	![Estado repo ejercicio 3](../../assets/images/Practica5.1/Estado-repo-ejercicio3.png)
+
+6. Quitar los cambios de la zona de intercambio temporal, pero mantenerlos en el directorio de trabajo.
+
+	- Para hacer esto usaremos los siguientes comandos:
+
+	```git
+	git restore --staged indice.txt
+	git restore --staged capitulos/capitulo4.txt
+	git restore --staged capitulos/capitulo3.txt
+	```
+
+	![Restore Ejercicio 3](../../assets/images/Practica5.1/restore-ejercicio3.png)
+
+7. Comprobar de nuevo el estado del repositorio.
+
+8. Deshacer los cambios realizados para volver a la versión del repositorio.
+
+	- Aquí usaremos el mismo comando que en el apartado 6 pero sin la opción `--staged`. Y para deshacer los cambios del capitulo4 usaremos este comando.
+
+	```
+	rm capitulos/capitulo4.txt
+	```
+
+	- Usamos rm en vez de git rm o restore, porque este archivo no está guardado en ningún commit de git.
+
+9. Volver a comprobar el estado del repositorio.
+
+	![Estado git ejercicio3](../../assets/images/Practica5.1/estado-ejercicio3.png)
+
+## **Ejercicio 4**
+
+1. Eliminar la última línea del fichero `indice.txt` y guardarlo.
+
+	![Borrar ejercicio 4](../../assets/images/Practica5.1/Borrar-Ejercicio4.png)
+
+2. Eliminar el fichero `capitulos/capitulo3.txt`.
+
+	```
+	rm capitulos/capitulo3.txt
+	```
+
+	![Estado ejercicio 4 1](../../assets/images/Practica5.1/status-ej4-1.png)
+
+3. Añadir los cambios a la zona de intercambio temporal y hacer un commit con el mensaje “Borrado accidental.”
+
+	![Borrado Accidental](../../assets/images/Practica5.1/commit-borrado-accidental.png)
+
+4. Comprobar el historial del repositorio.
+
+	![Log ej4](../../assets/images/Practica5.1/Log-Ej4.png)
+
+5. Deshacer el último commit pero mantener los cambios anteriores en el directorio de trabajo y la zona de intercambio temporal.
+
+	- Para mantener los cambios y borrar el commit, deberemos usar el siguiente comando:
+
+	```
+	git reset --soft HEAD~1
+	```
+
+	- El parámetro soft nos permite mantener los cambios y solo deshace el commit.
+
+	![Reset soft](../../assets/images/Practica5.1/soft-reset.png)
+
+6. Comprobar el historial y el estado del repositorio.
+
+	![Log 2 ej4](../../assets/images/Practica5.1/log2-ej4.png)
+
+7. Volver a hacer el commit con el mismo mensaje de antes.
+
+	![Borrado accidental2](../../assets/images/Practica5.1/borrado-accidental2.png)
+
+8. Deshacer el último commit y los cambios anteriores del directorio de trabajo volviendo a la versión anterior del repositorio.
+
+	- Ahora usaremos el parámetro `--hard`en vez de `--soft` para que el directorio vuelve a estar como el último commit antes de borrado accidental.
+
+	```
+	git reset --hard HEAD~1
+	```
+
+	![Hard reset](../../assets/images/Practica5.1/reset-hard.png)
+
+9. Comprobar de nuevo el historial y el estado del repositorio.
+
+	![Log ejercicio 4 2](../../assets/images/Practica5.1/log-ej4-2.png)
+
+## **Ejercicios de gestión de ramas**
+
+## **Ejercicio 1**
+
+1. Crear una nueva rama bibliografía y mostrar las ramas del repositorio.
+
+	-	Para crear una usaremos el comando `git branch` como se muestra abajo
+
+	```
+	git branch bibliografia
+	```
+
+	- Y para mostrar las ramas actuales usaremos:
+
+	```
+	git branch
+	```
+
+
+	![Rama bibliografia](../../assets/images/Practica5.1/rama-bibliografia.png)
+
+## **Ejercicio 2**
+
+1. Crear el fichero `capitulos/capitulo4.txt` y añadir el texto siguiente
+
+	`En este capítulo veremos cómo usar GitHub para alojar repositorios en remoto.`
+
+3. Añadir los cambios a la zona de intercambio temporal.
+
+	![EJ1-ramas.1](../../assets/images/Practica5.1/Ej1-ramas.1.png)
+
+4. Hacer un commit con el mensaje “Añadido capítulo 4.”
+
+5. Mostrar la historia del repositorio incluyendo todas las ramas.
+
+	- Para que en log salgan todas las ramas deberemos usar el parámetro `--all`.
+
+	```
+	git log --all
+	```
+
+	![Ejercicio 1 ramas 2](../../assets/images/Practica5.1/Ej1-ramas.2.png)
+
+## **Ejercicio 3**
+
+1. Cambiar a la rama bibliografía.
+
+	- Para cambiar a la rama bibliografía lo haremos con `git checkout`
+
+	!!! warning "Aviso"
+		Para cambiar de rama deberemos tener todos los cambios confirmados en el repositorio, si no podrían ocurrir errores.
+
+	```
+	git checkout bibliografia
+	```
+
+2. Crear el fichero `bibliografia.txt` y añadir la siguiente referencia
+
+`Chacon, S. and Straub, B. Pro Git. Apress.`
+
+4. Añadir los cambios a la zona de intercambio temporal.
+
+5. Hacer un commit con el mensaje “Añadida primera referencia bibliográfica.”
+
+	![Ej3 ramas 1](../../assets/images/Practica5.1/Ej3-ramas.1.png)
+
+6. Mostrar la historia del repositorio incluyendo todas las ramas.
+
+	![Ej 3 ramas 2](../../assets/images/Practica5.1/Ej3-ramas.2.png)
+
+## **Ejercicio 4**
+
+1. Fusionar la rama bibliografía con la rama master.
+
+	- Para fusionar la rama bibliografía con la rama master primero debemos de situarnos en la rama master y luego hacer un `merge` 
+
+	- Para cambiarnos de rama usaremos `git checkout` como anteriormente
+
+	![Merge rama bibliografía](../../assets/images/Practica5.1/Ej4-ramas.1.png)
+
+2. Mostrar la historia del repositorio incluyendo todas las ramas.
+
+	![Log ejercicio 4](../../assets/images/Practica5.1/Ej4-ramas.2.png)
+
+
+3. Eliminar la rama bibliografía.
+
+	- Para borrar la rama bibliografía usaremos el siguiente comando
+
+	```
+	git branch -d bibliografia
+	```
+
+	![Log Ejercicio 4](../../assets/images/Practica5.1/Ej4-ramas.3.png)
+
+4. Mostrar de nuevo la historia del repositorio incluyendo todas las ramas.
+	
+	![Log ejercicio4](../../assets/images/Practica5.1/Ei4-ramas.4.png)
+
+## **Ejercicio 5**
+
+1. Crear la rama bibliografía.
+
+2. Cambiar a la rama bibliografía.
+
+3. Cambiar el fichero `bibliografia.txt` para que contenga las siguientes referencias:
+
+	```
+	Scott Chacon and Ben Straub. Pro Git. Apress.
+	Ryan Hodson. Ry’s Git Tutorial. Smashwords (2014)
+	```
+
+5. Añadir los cambios a la zona de intercambio temporal y hacer un commit con el mensaje “Añadida nueva referencia bibliográfica.”
+
+	![Ej5 ramas 1](../../assets/images/Practica5.1/Ej5-ramas.1.png)
+
+6. Cambiar a la rama master.
+
+7. Cambiar el fichero `bibliografia.txt` para que contenga las siguientes referencias:
+
+```
+Chacon, S. and Straub, B. Pro Git. Apress.
+Loeliger, J. and McCullough, M. Version control with Git. O’Reilly.
+```
+
+9. Añadir los cambios a la zona de intercambio temporal y hacer un commit con el mensaje “Añadida nueva referencia bibliográfica.”
+
+	![Ej5 ramas 2](../../assets/images/Practica5.1/Ej5%20ramas%202.png)
+
+10. Fusionar la rama bibliografía con la rama master.
+
+
+
+11. Resolver el conflicto dejando el fichero `bibliografia.txt` con las referencias:
+
+```
+Chacon, S. and Straub, B. Pro Git. Apress.
+Loeliger, J. and McCullough, M. Version control with Git. O’Reilly.
+Hodson, R. Ry’s Git Tutorial. Smashwords (2014)
+```
+
+12. Añadir los cambios a la zona de intercambio temporal y hacer un commit con el mensaje “Resuelto conflicto de bibliografía.”
+
+	![Ej5 ramas 3](../../assets/images/Practica5.1/Ej5-ramas.3.png)
+
+13. Mostrar la historia del repositorio incluyendo todas las ramas.
+
+	![Ej5 ramas 4](../../assets/images/Practica5.1/Ej5-ramas.4.png)
+
+## **Ejercicios de repositorios remotos**
+
+## **Ejercicio 1**
+
+1. Crear un nuevo repositorio público en GitHub con el nombre libro-git.
+
+	![Ej1 remoto 1](../../assets/images/Practica5.1/Ej1-remoto.1.png)
+
+2. Añadirlo al repositorio local del libro.
+
+3. Mostrar todos los repositorios remotos configurados
+
+	![Ej1 remoto 2](../../assets/images/Practica5.1/Ej1-remoto.2.png)
+
+## **Ejercicio 2**
+
+1. Añadir los cambios del repositorio local al repositorio remoto de Github.
+	
+	- Para submit los cambios a git deberemos usar el siguiente comando:
+
+	```
+	git push -u origin master
+	```
+
+2. Acceder a Github y comprobar que se han subido los cambios mostrando el historial de versiones.
+
+	- Y como podemos ver, se han subido los cambios
+
+	![Ej5-remoto 1](../../assets/images/Practica5.1/Ej2-remoto.1.png)
+
+## **Ejercicio 3**
+
+1. Colaborar en el repositorio remoto libro-git de otro usuario.
+
+2. Clonar su repositorio libro-git.
+
+	- Para clonar un repositorio usaremos `git clone`
+
+	![Clonar](../../assets/images/Practica5.1/Ej3-remoto.1.png)
+
+3. Añadir el fichero autores.txt que contenga el nombre del usuario y su correo electrónico.
+
+4. Añadir los cambios a la zona de intercambio temporal.
+
+5. Hacer un commit con el mensaje “Añadido autor.”
+
+	![Autores](../../assets/images/Practica5.1/Ej3-remoto.2.png)
+
+6. Subir los cambios al repositorio remoto.
+
+	- Esta vez, como la rama en el remoto ya está creada obviaremos el parámetro `-u` en `git push`
+
+	```
+	git push
+	```
+
+	![PUSH](../../assets/images/Practica5.1/Ej3-remoto.3.png)
+
+## **Ejercicio 4**
+
+1. Hacer una bifurcación del repositorio remoto `asalber/libro-git` en GitHub.
+	
+	- Para lograr esto nos iremos al repositorio en github y haremos clic sobre Fork
+
+	![Ejercicio 4](../../assets/images/Practica5.1/Ej4-remoto.1.png)
+
+	![Ejercicio 4](../../assets/images/Practica5.1/Ej4-remoto.2.png)
+
+2. Clonar el repositorio creado en la cuenta de GitHub del usuario.
+
+	```
+	git clone https://github.com/Alexcorox/libro-git.git
+	```
+
+3. Crear una nueva rama autoría y activarla.
+
+	![Ejercicio 4](../../assets/images/Practica5.1/Ej4-remoto.3.png)
+
+4. Añadir el nombre del usuario y su correo al fichero autores.txt.
+
+5. Añadir los cambios a la zona de intercambio temporal.
+
+6. Hacer un commit con el mensaje “Añadido nuevo autor.”
+
+7. Subir los cambios de la rama autoría al repositorio remoto en GitHub.
+
+	![alt text](../../assets/images/Practica5.1/Ej4-remoto.4.png)
+
+8. Hacer un Pull Request de los cambios en la rama autoría. 
+
+	- Para crear un pull request deberemos ir al apartado pull request dentro de github y haremos clic en `create a pull request`
+
+	![Pull request 1](../../assets/images/Practica5.1/Ej4-remoto.5.png)
+
+	- Seleccionamos las ramas que queremos que compare para hacer el pull request. Y como podemos observar detecta las diferencias que hay entre ellas.
+
+	![Pull request 2](../../assets/images/Practica5.1/Ej4-remoto.6.png)
+
+	- Le asignamos un nombre y le damos a `create pull request`.
+
+	![Pull request 3](../../assets/images/Practica5.1/Ej4-remoto.7.png)
+
+	- Una vez que hayamos completado estos pasos, habremos creado nuestro pull request
+
+	![Pull request 4](../../assets/images/Practica5.1/Ej4-remoto.8.png)
