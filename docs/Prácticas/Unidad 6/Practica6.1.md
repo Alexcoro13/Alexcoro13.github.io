@@ -9,51 +9,50 @@ En esta práctica vamos a Dockerizar una aplicación de Node.js que usa una BBDD
 Primero necesitaremos instalar Docker en nuestra máquina para esto seguiremos los siguientes pasos:
 
 1. Actualizar nuestro equipo:
-
-  ```bash
-  sudo apt update
-  sudo apt upgrade
-  ```
+	```bash
+	sudo apt update
+	sudo apt upgrade
+	```
 
 2. Instalar dependencias necesarias para que Docker pueda ejecutarse:
 
-  ```bash
-  sudo apt install apt-transport-https ca-certificates gnupg2 software-properties-common
-  ```
+    ```bash
+    sudo apt install apt-transport-https ca-certificates gnupg2 software-properties-common
+    ```
 
 3. Añadir la clave GPG del repositorio Docker:
 
-  ```bash
-  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-  ```
+	```bash
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+	```
 
 4. Añadir el repositorio Docker
 
-  ```
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-  ``
+	```
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+	``
 
 5. Actualizar la lista de paquetes
 
-  ```bash
-  sudo apt update
-  ```
+	```bash
+	sudo apt update
+	```
 
-7. Instalar Docker
+6. Instalar Docker
 
-  ```bash
-  sudo apt install docker-ce
-  ```
+	```bash
+	sudo apt install docker-ce
+	```
 
-8. Comprobar que docker esta instalado:
+7. Comprobar que docker esta instalado:
 
-  ```bash
-  docker -v
-  ```
+	```bash
+	docker -v
+	```
 
-- Y como podemos ver en la imagen de abajo tenemos la última versión de docker instalada en nuestro equipo
+	- Y como podemos ver en la imagen de abajo tenemos la última versión de docker instalada en nuestro equipo
 
-![Versión de Docker](../../assets/images/Practica6.1/docker-version.png)
+	![Versión de Docker](../../assets/images/Practica6.1/docker-version.png)
 
 ## **Despliegue con Docker**
 
@@ -179,7 +178,7 @@ volumes:
 ```
 
 !!! warning "Atención"
-Es aconsejable que antes de seguir paremos el contenedor del apartado anterior, pues vamos a usar el mismo puerto `3000` para docker compose
+    Es aconsejable que antes de seguir paremos el contenedor del apartado anterior, pues vamos a usar el mismo puerto `3000` para docker compose
 
     ```
     docker stop nombre_contenedor
@@ -194,7 +193,7 @@ docker compose run addressbook npm run migrate
 ```
 
 !!! note "Nota"
-El comando `docker compose run` nos permite ejecutar comandos sobre un servicio de docker compose
+	El comando `docker compose run` nos permite ejecutar comandos sobre un servicio de docker compose
 
 Este comando creará las tablas necesarias en la base de datos.
 
@@ -211,7 +210,7 @@ docker compose up --build -d
 Y como se puede observar el contenedor ya está funcionando y se puede acceder a él.
 
 !!! note "Tarea"
-Probad que la aplicación junto con la BBDD funciona correctamente. El funcionamiento de la API es:
+    Probad que la aplicación junto con la BBDD funciona correctamente. El funcionamiento de la API es:
 
     - `GET /persons/all` muestra todas las personas en el libro de direcciones
     - `GET /persons/1` muestra la persona con el id 1
@@ -229,29 +228,28 @@ Para hacer esta tarea usaré la herramienta postman para hacer uso de la API
 
 1. Función put:
 
-   ![Petición put postman](../../assets/images/Practica6.1/petición-put-postman.png)
+	![Petición put postman](../../assets/images/Practica6.1/petición-put-postman.png)
 
-   Como podemos ver, después de hacer el put, la aplicación nos devuelve los datos que hemos introducido en la base de datos junto al código 200 indicando que se han insertado correctamente.
+	Como podemos ver, después de hacer el put, la aplicación nos devuelve los datos que hemos introducido en la base de datos junto al código 200 indicando que se han insertado correctamente.
 
 2. Función GET /persons/1
 
-   ![Petición get 1](../../assets/images/Practica6.1/peticion-get-1.png)
+	![Petición get 1](../../assets/images/Practica6.1/peticion-get-1.png)
 
-   En este caso la aplicación nos devuelve la información de la persona con ID 1
+	En este caso la aplicación nos devuelve la información de la persona con ID 1
 
 3. Función GET /persons/all
 
-   ![Petición Get all](../../assets/images/Practica6.1/petición-put-postman.png)
+	![Petición Get all](../../assets/images/Practica6.1/petición-put-postman.png)
 
-   Aquí la aplicación nos devuelve todas las personas que hay en la base de datos.
+	Aquí la aplicación nos devuelve todas las personas que hay en la base de datos.
 
 4. Y por último DELETE /persons/1
 
-   ![Petición delete](../../assets/images/Practica6.1/peticion-delete.png)
+	![Petición delete](../../assets/images/Practica6.1/peticion-delete.png)
 
-   Esta petición como su nombre indica borrar a la persona con ID 1
+	Esta petición como su nombre indica borrar a la persona con ID 1
 
-   ![Petición get 1 null](../../assets/images/Practica6.1/peticion-get-1-null.png)
+	![Petición get 1 null](../../assets/images/Practica6.1/peticion-get-1-null.png)
 
-   Y si volvemos a intentar acceder a la persona 1 podemos ver que devuelve null, indicando que se ha borrado exitosamente. 
-
+	Y si volvemos a intentar acceder a la persona 1 podemos ver que devuelve null, indicando que se ha borrado exitosamente. 
