@@ -123,3 +123,110 @@ docker compose up -d
 Y como podemos ver docker ya empieza a descargar las imagenes
 
 ![docker pulling](../../assets/images/Practica6.3/docker-pulling.png)
+
+## **Despliegue con Docker de PHP + Apache con autenticación LDAP**
+
+- Creamos un directorio que se llame ``Practica 6.3 - PHP``
+
+```
+mkdir 6.3
+```
+
+- Ahora creamos, `index.php` dentro del directorio que hemos creado anteriormente.
+
+```php
+  <?php
+  echo 'Well, hello LDAP authenticated user!';
+```
+
+![creacion php](../../assets/images/Practica6.3/index.php.png)
+
+- Lo siguiente que deberemos hacer será crear otro directorio llamado
+`Docker` y dentro él, un archivo Dockerfile.
+
+```docker
+# ./Docker/Dockerfile --> directorio donde se encuentra este archivo
+
+# Imagen base sobre la que vamos a trabajar
+FROM php:7-apache
+
+# Activamos el módulo LDAP de Apache ejecutando el siguiente comando
+RUN a2enmod authnz_ldap
+
+# Añadimos las reglas/configuración de LDAP al directorio conf-enabled de Apache
+# (crearemos este archivo en el siguiente paso)
+COPY Docker/ldap-demo.conf /etc/apache2/conf-enabled/
+
+# Añadimos ayuda de depuración (debugging) en la configuración de apache
+# En caso de necesitarlo, lo descomentamos para ejecutar el siguiente comando
+# RUN echo "LogLevel debug" >> /etc/apache2/apache2.conf
+
+# Establecemos el directorio de trabajo adecuado
+WORKDIR /var/www/html/demo
+
+# Configuramos Apache para usar la configuración LDAP definida arriba, la copiamos de nuestro ordenador al contenedor
+COPY Docker/.htaccess ./.htaccess
+
+# Copiamos los archivos del proyecto que necesitamos, al contenedor
+COPY index.php ./index.php
+```
+
+![Dockerfile](../../assets/images/Practica6.3/Dockerfile.png)
+
+- Ahora creamos el archivo `./Docker/ladp-demo.conf`, que es la configuración LADP.
+Las directivas PassEnv al principio del archivo nos permiten omitir credenciales y pasarlas 
+luego como variables de entorno al correr el contenedor.
+
+```
+# ./Docker/ldap-demo.conf
+PassEnv LDAP_BIND_ON
+PassEnv LDAP_PASSWORD
+PassEnv LDAP_URL
+<AuthnProviderAlias ldap demo>
+    AuthLDAPBindDN ${LDAP_BIND_ON}
+    AuthLDAPBindPassword ${LDAP_PASSWORD}
+    AuthLDAPURL ${LDAP_URL}
+</AuthnProviderAlias> 
+```
+
+![ldap-demo](../../assets/images/Practica6.3/ldap-demo.png)
+
+- Creamos un nuevo archivo llamado `.htacces`:
+
+```
+# ./.htaccess
+AuthBasicProvider demo
+AuthType Basic
+AuthName "Protected Area"
+Require valid-user
+```
+
+![htaccess](../../assets/images/Practica6.3/htaccess.png)
+
+- Por último ejecutaremos el siguiente comando para que docker cree la imagen.
+
+```docker
+docker build \
+    -t docker-ldap \
+    -f ./Docker/Dockerfile \
+    .
+```
+
+![build dockerfile](../../assets/images/Practica6.3/build-dockerfile.png)
+
+- Una vez creada la imagen ejecutaremos el contenedor indicando las credenciales de nuestra cuenta LDAP mediante variables de entorno con la flag -e. Para este caso, vamos a probar un servidor LDAP externo.
+
+```
+docker run \
+    -p 3000:80 \
+    --name ldap_demo \
+    -e LDAP_BIND_ON='cn=read-only-admin,dc=example,dc=com' \
+    -e LDAP_PASSWORD='password' \
+    -e LDAP_URL='LDAP://ldap.forumsys.com/dc=example,dc=com' \
+    docker-ldap
+```
+
+- No nos queda más que ir a http://IP-Máq-Debian:3000/demo. Si todo ha ido bien, nos solicitará nuestras credenciales para iniciar sesion.
+
+![Comprobacion web](../../assets/images/Practica6.3/comprobacion-web.png)
+
