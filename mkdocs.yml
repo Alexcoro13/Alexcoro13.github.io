@@ -3,7 +3,7 @@ site_url: https://mydomain.org/mysite
 theme:
   name: material
   font:
-    text: Open Sans
+    text: Inter
     code: Roboto Mono
   palette: 
         # Palette toggle for light mode
@@ -26,7 +26,7 @@ theme:
     - toc.integrate
     - navigation.footer
     - content.code.copy
-
+    - palette:toggle
 
 markdown_extensions:
   - attr_list
